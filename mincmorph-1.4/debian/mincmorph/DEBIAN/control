@@ -1,0 +1,21 @@
+Package: mincmorph
+Version: 1.4-1
+Architecture: amd64
+Maintainer: Andrew Janke <a.janke@gmail.com>
+Installed-Size: 88
+Depends: libc6 (>= 2.4), libhdf5-openmpi-1.8.4, libminc2-1 (>= 2.1.00), libnetcdf6, zlib1g (>= 1:1.1.4)
+Section: science
+Priority: extra
+Homepage: https://github.com/andrewjanke/mincmorph
+Description: mincmorph performs morphology operations on MINC files
+ mincmorph - morphological operations 101
+ .
+ Much of the theory behind what this does can be found at these web sites..
+ http://www.mmorph.com/faq.htm
+ http://www.dai.ed.ac.uk/HIPR2/skeleton.htm
+ SNF - http://www.umiacs.umd.edu/research/EXPAR/papers/3449/node7.html#SECTION00041000000000000000
+ CC8 - http://www.dai.ed.ac.uk/CVonline/LOCAL_COPIES/OWENS/LECT3/node2.html
+     - http://www.dai.ed.ac.uk/HIPR2/label.htm
+ .
+ HOW TO USE IT:
+       mincmorph -help      for more information
