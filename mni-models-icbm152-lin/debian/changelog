@@ -1,0 +1,6 @@
+mni-models-icbm152-lin (1.1-1) unstable; urgency=low
+
+  * Initial release.
+  * Switch to dpkg-source 3.0 (quilt format)
+
+ -- Andrew Janke <a.janke@gmail.com>  Thu, 05 May 2011 02:11:56 +1000

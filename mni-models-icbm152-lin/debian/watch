@@ -1,0 +1,3 @@
+version=3
+http://packages.bic.mni.mcgill.ca/tgz/mni-models_icbm152-lin-(.+)\.tar\.gz 
+

@@ -1,0 +1,73 @@
+#!/usr/bin/make -f
+# -*- makefile -*-
+
+# Uncomment this to turn on verbose mode.
+#export DH_VERBOSE=1
+
+
+config.status: configure
+	dh_testdir
+	# Add here commands to configure the package.
+	./configure --prefix=/usr 
+
+
+build: build-stamp
+
+build-stamp:  config.status
+	dh_testdir
+
+	# Add here commands to compile the package.
+	$(MAKE)
+
+	touch $@
+
+clean:
+	dh_testdir
+	dh_testroot
+	rm -f build-stamp 
+
+	# Add here commands to clean up after the build process.
+#	-$(MAKE) distclean
+	-rm -f icbm_avg_152*.mnc
+
+	dh_clean 
+
+install: build
+	dh_testdir
+	dh_testroot
+	dh_clean -k 
+	dh_installdirs
+
+	# Add here commands to install the package into debian/mni-autoreg-model.
+	$(MAKE) install DESTDIR=$(CURDIR)/debian/mni-models-icbm152-lin
+	
+	# move images to their final location
+	mv $(CURDIR)/debian/mni-models-icbm152-lin/usr/share/mni-models \
+	   $(CURDIR)/debian/mni-models-icbm152-lin/usr/share/mni
+	   
+	# remove the gzipped versions
+	rm -f $(CURDIR)/debian/mni-models-icbm152-lin/usr/share/mni/icbm_avg_152_*_lin_*.mnc.gz
+
+# Build architecture-independent files here.
+binary-indep: build install
+# We have nothing to do by default.
+
+# Build architecture-dependent files here.
+binary-arch: build install
+	dh_testdir
+	dh_testroot
+	dh_installchangelogs ChangeLog
+	dh_installdocs
+	dh_installexamples
+	dh_installman
+	dh_link
+	dh_compress
+	dh_fixperms
+	dh_installdeb
+	dh_shlibdeps
+	dh_gencontrol
+	dh_md5sums
+	dh_builddeb
+
+binary: binary-indep binary-arch
+.PHONY: build clean binary-indep binary-arch binary install 
