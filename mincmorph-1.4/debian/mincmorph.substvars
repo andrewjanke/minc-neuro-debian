@@ -1,2 +1,0 @@
-shlibs:Depends=libc6 (>= 2.4), libhdf5-openmpi-1.8.4, libminc2-1, libnetcdf6, zlib1g (>= 1:1.1.4)
-misc:Depends=
